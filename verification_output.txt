@@ -1,0 +1,112 @@
+[1]  Elliptic commutator rotation cosine
+     Tr(C)            = 3.95554175279993270285093557399
+     cos(omega)        = 0.977770876399966351425467786997
+     closed form       = 0.977770876399966351425467786997
+     |measured - closed| = 8.1651e-202
+     |C^T eta C - eta|   = 6.5321e-201  (Lorentz check)
+     ==> PASS
+
+[2]  Minimal polynomial of cos(omega)
+     polynomial:         2500 x^2 + (-3100) x + 641
+     discriminant:       3200000 = 800^2 * 5  (non-square in Q)
+     poly evaluated at closed form: 0
+     ==> PASS
+
+[3]  Cyclotomic cosine exclusion of rational omega/pi
+     +sqrt(2)/2     diff = 0.27066  excluded
+     -sqrt(2)/2     diff = 1.6849  excluded
+     +sqrt(3)/2     diff = 0.11175  excluded
+     -sqrt(3)/2     diff = 1.8438  excluded
+     +phi/2         diff = 0.16875  excluded
+     -phi/2         diff = 1.7868  excluded
+     +(phi-1)/2     diff = 0.66875  excluded
+     -(phi-1)/2     diff = 1.2868  excluded
+     ==> PASS
+
+[4]  Molien series for I on R^3
+     M_I(t) = (1 + t^15) / ((1 - t^2)(1 - t^6)(1 - t^10))
+     coefficients d = 0..16:
+       a_0  = 1   (expected 1)
+       a_1  = 0   (expected 0)
+       a_2  = 1   (expected 1)
+       a_3  = 0   (expected 0)
+       a_4  = 1   (expected 1)
+       a_5  = 0   (expected 0)
+       a_6  = 2   (expected 2)
+       a_7  = 0   (expected 0)
+       a_8  = 2   (expected 2)
+       a_9  = 0   (expected 0)
+       a_10 = 3   (expected 3)
+       a_11 = 0   (expected 0)
+       a_12 = 4   (expected 4)
+       a_13 = 0   (expected 0)
+       a_14 = 4   (expected 4)
+       a_15 = 1   (expected 1)
+       a_16 = 5   (expected 5)
+     ==> PASS
+
+[5]  Anisotropy degree of I-invariants on R^3
+     dim((S^2 R^3)^I) = 1  (only |k|^2)
+     dim((S^4 R^3)^I) = 1  (only (|k|^2)^2: leading isotropy preserved)
+     dim((S^6 R^3)^I) = 2  (|k|^6 plus Klein form K_6: first anisotropy)
+     ==> PASS
+
+[6]  Cubic coupling: dispersion anisotropy spread ~ |k|^4
+     fit: spread = 0.0552 . |k|^3.9980
+     predicted exponent: 4  (Molien dim((S^4 R^3)^O_h) = 2)
+     ==> PASS
+
+[7]  Icosahedral coupling: dispersion anisotropy spread ~ |k|^6
+     fit: spread = 7.8665e-04 . |k|^5.9985
+     predicted exponent: 6  (Molien dim((S^6 R^3)^I) = 2)
+     ==> PASS
+
+[8]  Galois equivariance:  sigma_k . M_J . sigma_k^{-1} == M_{sigma_k(J)}
+     M_zeta^5 == I:                              True
+     sigma_2 . M_J . sigma_2^-1 == I + M_zeta^4: True
+     sigma_3 . M_J . sigma_3^-1 == I + M_zeta^6: True
+     sigma_4 . M_J . sigma_4^-1 == I + M_zeta^8: True
+     ==> PASS
+
+[9]  Elliptic classification of C
+     C^T eta C - eta == 0:    True
+     det(C) == 1:             True
+     rank(C - I) == 2:        True  (rank = 2)
+     dim ker(C - I) == 2:     True
+     fixed-plane Gram det:    -13/2 - sqrt(5)/2
+     signature (1, 1):        True  (det < 0)
+     ==> PASS
+
+[10] Explicit A_5 element g sending v_1 -> v_2
+     g^T g == I:                          True
+     det(g) == 1:                         True
+     g^3 == I (order 3):                  True
+     g^2 != I (so order is exactly 3):    True
+     g v_1 == v_2:                        True
+     ||v_1||^2 = ||v_2||^2 = phi + 2:     True
+     v_1 . v_2 == phi:                    True
+     cos alpha == 1/sqrt(5):              True
+     ==> PASS
+
+[11] Group membership of g via vertex permutation
+     |V| (12 standard icosahedron vertices):    12
+     |g . V|:                                    12
+     g permutes V (g . V == V):                  True
+     orbit sizes (expect [3, 3, 3, 3]):          [3, 3, 3, 3]
+     ==> PASS
+
+========================================================================
+  [1]  elliptic commutator cos(omega)             PASS
+  [2]  minimal polynomial of cos(omega)           PASS
+  [3]  cyclotomic cosine exclusion                PASS
+  [4]  Molien series coefficients                 PASS
+  [5]  anisotropy degree of I-invariants          PASS
+  [6]  cubic dispersion exponent ~ 4              PASS
+  [7]  icos dispersion exponent ~ 6               PASS
+  [8]  Galois equivariance of M_J                 PASS
+  [9]  elliptic classification of C               PASS
+  [10] explicit A_5 element                       PASS
+  [11] g permutes 12 icosahedron vertices         PASS
+========================================================================
+  11/11 PASS
+

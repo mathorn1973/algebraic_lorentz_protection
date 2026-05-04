@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the article and the code."
+title: "algebraic-lorentz-protection: verification scripts"
+abstract: >-
+  Eleven-test verification suite for the elliptic-commutator density
+  argument and Molien-series spatial anisotropy calculation in the
+  companion paper. All tests use exact sympy-symbolic or 200-digit
+  mpmath arithmetic. Runtime under one second.
+authors:
+  - family-names: Thorn
+    given-names: "A. M."
+    orcid: "https://orcid.org/0009-0008-5463-278X"
+version: "0.9.0"
+date-released: "2026-05-04"
+license: CC-BY-4.0
+type: software
+repository-code: "https://github.com/mathorn1973/algebraic-lorentz-protection"
+url: "https://github.com/mathorn1973/algebraic-lorentz-protection"
+keywords:
+  - Lorentz invariance
+  - icosahedral group
+  - cyclotomic field
+  - dense subgroup
+  - density theorem
+  - mathematical physics
+  - sympy
+  - mpmath
+preferred-citation:
+  type: article
+  title: "Dense cyclotomic subgroups of the Lorentz group and the Collins-Perez-Sudarsky obstruction"
+  authors:
+    - family-names: Thorn
+      given-names: "A. M."
+      orcid: "https://orcid.org/0009-0008-5463-278X"
+  year: 2026
+  notes: "Preprint, distributed via the companion repository."
