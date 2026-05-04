@@ -1,0 +1,808 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+\urlstyle{tt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\title{Dense cyclotomic subgroups of the Lorentz group\\
+and the Collins--Perez--Sudarsky obstruction}
+\author{A.~M.~Thorn}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We construct a finitely generated subgroup
+$\Gamma = \langle A_5, B_J\rangle$ of $\mathrm{SO}^+(3,1)^0$ from the
+rotational icosahedral group $A_5$ and a single Lorentz boost $B_J$
+of rapidity $\log\varphi$, where $\varphi = (1+\sqrt{5})/2$ arises
+from the cyclotomic unit $J = 1 + \zeta_5^2 \in \mathbb{Z}[\zeta_5]$.
+Density of $\Gamma$ in the identity component is proved in two steps.
+First, an explicit commutator of two conjugate boosts is shown to be
+a pure elliptic Lorentz element with rotation cosine
+$c_\omega = (31 + 8\sqrt{5})/50$, satisfying the irreducible quadratic
+$2500\,x^2 - 3100\,x + 641$ over $\mathbb{Q}$; Niven's theorem and a
+direct numerical comparison rule out rational $\omega/\pi$, so the
+cyclic group it generates is dense in a one-parameter elliptic
+subgroup. Second, the Lie algebra of the identity component of the
+closure is $\mathrm{Ad}(\Gamma)$-invariant; combining the
+irreducibility of the $A_5$-action on
+$\mathfrak{so}(3,1) = \mathfrak{k} \oplus \mathfrak{p}$ with the
+bracket structure forces this Lie algebra to be all of
+$\mathfrak{so}(3,1)$. Topologically, every continuous
+$\Gamma$-invariant functional on a configuration space with
+continuous $\mathrm{SO}^+(3,1)^0$-action is automatically Lorentz
+invariant. Under standard regularity assumptions on the dynamics,
+measure, regulator, and coarse-graining, the resulting Wilson
+effective action of any substrate field theory with $\Gamma$ in its
+symmetry group cannot contain Lorentz-violating operators, addressing
+the Collins--Perez--Sudarsky--Urrutia--Vucetich (2004) radiative
+fine-tuning obstruction at its premise.
+\end{abstract}
+
+
+\section{Introduction}
+
+Discrete-substrate models of spacetime face a structural obstruction
+identified by Collins, Perez, Sudarsky, Urrutia and Vucetich
+\cite{CPSUV04}. A discrete substrate breaks Lorentz invariance at the
+ultraviolet cutoff $\Lambda \sim E_{\mathrm{Planck}}$, and radiative
+corrections in the effective field theory below $\Lambda$ generically
+inflate this ultraviolet violation into infrared coefficients of order
+$\Lambda^2 / 16\pi^2$. To match the observed bounds on Lorentz
+violation \cite{Mattingly05,LiberatiReview}, the ultraviolet
+coefficients must be fine-tuned to a precision of $10^{-20}$ or finer,
+with no symmetry known to enforce the tuning. Most discrete substrates
+examined in the literature fall to this argument: cubic lattice gauge
+theories, naive lattice formulations of loop quantum gravity, and
+Lorentz-violating variants of doubly-special relativity. Causal-set
+theory \cite{BHS87} escapes by appeal to Poisson sprinkling and a
+statistical Lorentz invariance.
+
+The mechanism of the Collins--Perez--Sudarsky obstruction is a mismatch
+between the ultraviolet symmetry $G_{\mathrm{UV}}$ of the substrate
+and the infrared symmetry $\mathrm{SO}^+(3,1)^0$ of the effective
+theory. $G_{\mathrm{UV}}$-invariant operators that are not also
+Lorentz-invariant are present in the effective Lagrangian, and
+radiative corrections generate them with their natural coefficients.
+Fine-tuning is required to suppress them.
+
+This paper observes that the obstruction does not apply when
+$G_{\mathrm{UV}}$ is a dense subgroup of $\mathrm{SO}^+(3,1)^0$. In
+that case, the set of $G_{\mathrm{UV}}$-invariant continuous
+functionals on a Lorentz-equivariant field space coincides with the
+set of $\mathrm{SO}^+(3,1)^0$-invariant continuous functionals. No
+Lorentz-violating operator can occur; there is nothing to tune.
+
+We exhibit a concrete example. Let $K = \mathbb{Q}(\zeta_5)$ with
+$\zeta_5 = e^{2\pi i/5}$, and let $J = 1 + \zeta_5^2 \in
+\mathcal{O}_K$. Galois norm and embeddings give the four conjugate
+moduli $(|\sigma_1 J|, |\sigma_2 J|, |\sigma_3 J|, |\sigma_4 J|) =
+(\varphi^{-1}, \varphi, \varphi, \varphi^{-1})$ where $\varphi =
+(1+\sqrt{5})/2$, so $J$ is a unit. We use $J$ to fix the rapidity
+$\rho = \log\varphi$ of a Lorentz boost $B_J \in \mathrm{SO}^+(3,1)^0$
+along a chosen axis: $\rho = \log\varphi$ is the positive
+logarithmic absolute value occurring among the Galois conjugates of
+$J$ (it occurs twice, for $k = 2$ and $k = 3$). Let $A_5 \subset \mathrm{SO}(3)$ be the
+rotational icosahedral group (the image of the binary icosahedral
+group $2I \subset \mathrm{SU}(2)$ under the spin double cover), embedded
+in $\mathrm{SO}^+(3,1)^0$ via the block embedding $g \mapsto
+\mathrm{diag}(1, g)$. The group $\Gamma = \langle A_5, B_J\rangle
+\subset \mathrm{SO}^+(3,1)^0$ has infinite order. Our main theorem
+establishes that its closure is the full identity component.
+
+The proof has two steps. An explicit commutator of conjugate boosts
+yields an infinite-order elliptic Lorentz element whose rotation
+cosine $c_\omega$ has degree two over $\mathbb{Q}$; Niven's theorem
+restricts a putative rational $\omega/\pi$ to a finite list of
+candidate cosines, and direct comparison rules them all out. The
+cyclic group generated by this element is therefore dense in a
+one-parameter elliptic subgroup of $\mathrm{SO}^+(3,1)^0$. The Lie
+algebra of the identity component of the closure is then
+$\mathrm{Ad}(\Gamma)$-invariant, and the irreducibility of $A_5$ on
+$\mathfrak{so}(3,1) = \mathfrak{k} \oplus \mathfrak{p}$ together with
+the bracket structure forces this Lie algebra to be all of
+$\mathfrak{so}(3,1)$.
+
+The Lorentz protection corollary is a topological consequence of
+density: under standard continuity assumptions on the effective
+dynamics, every continuous $\Gamma$-invariant functional is
+$\mathrm{SO}^+(3,1)^0$-invariant.
+
+A separate computational appendix verifies an unrelated but
+useful Molien-series fact: $A_5$-invariant spatial couplings on
+$\mathbb{R}^3$ have first angular anisotropy at degree six, two orders
+later than cubic-symmetric couplings. This is a consequence of the
+classical icosahedral invariant theory of Klein \cite{Klein1884} and
+serves as a numerical check of the spatial-symmetry features of the
+substrate, not of Lorentz protection itself. All scripts are released
+as a companion artifact \cite{ALPCode}.
+
+
+\section{Construction}
+
+Let $K = \mathbb{Q}(\zeta_5)$, $\mathcal{O}_K = \mathbb{Z}[\zeta_5]$,
+and $\varphi = (1+\sqrt{5})/2$. The Galois group
+$\mathrm{Gal}(K/\mathbb{Q})$ is cyclic of order four, generated by
+$\sigma_2: \zeta_5 \mapsto \zeta_5^2$. Set
+\[
+  J \;=\; 1 + \zeta_5^2 \;\in\; \mathcal{O}_K.
+\]
+Direct computation gives the conjugate moduli
+$(|\sigma_1 J|, |\sigma_2 J|, |\sigma_3 J|, |\sigma_4 J|) =
+(\varphi^{-1}, \varphi, \varphi, \varphi^{-1})$ and norm
+$N_{K/\mathbb{Q}}(J) = 1$, so $J$ is a unit. The four real numbers
+$\log|\sigma_k J|$ form the multiset
+\[
+  \bigl\{\, -\log\varphi,\; +\log\varphi,\; +\log\varphi,\;
+    -\log\varphi \,\bigr\},
+\]
+and the positive logarithmic absolute value occurring among the
+Galois conjugates is $\log\varphi$, with multiplicity two. We use this real positive
+unit-logarithm as the rapidity $\rho = \log\varphi$ of a Lorentz
+boost $B_J \in \mathrm{SO}^+(3,1)^0$ along the chosen axis $\hat{z}$.
+
+In coordinates,
+\[
+  B_J \;=\;
+  \begin{pmatrix}
+    \cosh\rho & 0 & 0 & \sinh\rho \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    \sinh\rho & 0 & 0 & \cosh\rho
+  \end{pmatrix}
+  \;=\;
+  \begin{pmatrix}
+    \sqrt{5}/2 & 0 & 0 & 1/2 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    1/2 & 0 & 0 & \sqrt{5}/2
+  \end{pmatrix}.
+\]
+Note that $\cosh\rho = \sqrt{5}/2$ and $\sinh\rho = 1/2$ both lie in
+$\mathbb{Q}(\sqrt{5})$, so $B_J$ has entries in $\mathbb{Q}(\sqrt{5})$.
+
+The rotational icosahedral group $I = A_5 \subset \mathrm{SO}(3)$ is
+the simple non-abelian group of order $60$, the image of the binary
+icosahedral group $2I \subset \mathrm{SU}(2)$ under the spin double
+cover. We embed $A_5$ into $\mathrm{SO}^+(3,1)^0$ as the spatial
+rotation block: $g \mapsto \mathrm{diag}(1, g)$. Define
+\[
+  \Gamma \;=\; \bigl\langle\, A_5,\, B_J \,\bigr\rangle \;\leq\;
+    \mathrm{SO}^+(3,1)^0.
+\]
+
+
+\section{Density theorem}
+
+\begin{theorem}\label{thm:density}
+The topological closure $\overline{\Gamma}$ in $\mathrm{SO}^+(3,1)^0$
+equals the whole identity component.
+\end{theorem}
+
+\begin{proof}
+Let $H = \overline{\Gamma}$ and let $H^0$ be its identity component.
+We show $\mathrm{Lie}(H^0) = \mathfrak{so}(3,1)$ in two steps.
+
+\emph{Step 1: an infinite-order elliptic element.}
+Identify $\mathbb{R}^3$ with the spatial slice of $\mathbb{R}^{1,3}$
+and place an icosahedron inscribed in the unit sphere with vertices
+forming a single $A_5$-orbit of twelve directions. The standard
+choice
+\[
+  v_1 = (0, 1, \varphi), \qquad v_2 = (1, \varphi, 0)
+\]
+gives two adjacent vertices with $\|v_1\|^2 = \|v_2\|^2 = \varphi+2$
+and $v_1 \cdot v_2 = \varphi$, so the angle $\alpha$ between them
+satisfies
+\[
+  \cos\alpha \;=\; \frac{v_1 \cdot v_2}{\|v_1\|\,\|v_2\|} \;=\;
+  \frac{\varphi}{\varphi+2} \;=\; \frac{1}{\sqrt{5}}.
+\]
+The order-three rotation
+\[
+  g \;=\; \begin{pmatrix}
+    -1/2 & (1-\sqrt{5})/4 & (1+\sqrt{5})/4 \\
+    (-1+\sqrt{5})/4 & (1+\sqrt{5})/4 & 1/2 \\
+    -(1+\sqrt{5})/4 & 1/2 & (1-\sqrt{5})/4
+  \end{pmatrix}
+\]
+satisfies $g v_1 = v_2$, $g^T g = I$, $\det g = 1$, and $g^3 = I$.
+A direct check shows that $g$ permutes the set of twelve standard
+icosahedron vertices $\{(0, \pm 1, \pm\varphi), (\pm 1, \pm\varphi, 0),
+(\pm\varphi, 0, \pm 1)\}$, with orbit structure four disjoint
+$3$-cycles. Since $g$ permutes the vertices of the standard
+icosahedron and has $\det g = 1$, it lies in the rotational symmetry
+group of that icosahedron, which is the rotational icosahedral group
+$I \cong A_5$. Geometrically, $g$ is the order-three rotation about
+the centre of the icosahedral face shared between $v_1$ and $v_2$.
+
+Density of a subgroup is invariant under conjugation in
+$\mathrm{SO}^+(3,1)^0$: if $R \in \mathrm{SO}^+(3,1)^0$, then
+$R \Gamma R^{-1}$ is dense if and only if $\Gamma$ is. After a
+spatial conjugation by $R \in \mathrm{SO}(3) \subset
+\mathrm{SO}^+(3,1)^0$ sending $v_1 / \|v_1\|$ to the third coordinate
+axis, we may therefore take the boost axis to be
+$\hat{z} = v_1 / \|v_1\|$. The other vertex direction is then
+$\hat{n} = v_2 / \|v_2\|$, and we set $B_g = g B_J g^{-1}$, the boost
+of rapidity $\rho = \log\varphi$ along $\hat{n}$. The commutator
+\[
+  C \;=\; B_J B_g B_J^{-1} B_g^{-1} \;\in\; \Gamma.
+\]
+Direct calculation in $\mathbb{Q}(\sqrt{5})$ gives the trace
+\[
+  \mathrm{tr}\,C \;=\; 2 \;+\; 2 c_\omega, \qquad
+  c_\omega \;=\; \frac{31 + 8\sqrt{5}}{50},
+\]
+and the characteristic polynomial
+\[
+  \chi_C(\lambda) \;=\; (\lambda - 1)^2 \bigl(\lambda^2 - 2 c_\omega
+  \lambda + 1\bigr).
+\]
+The eigenvalues are $1, 1, e^{i\omega}, e^{-i\omega}$ with
+$\cos\omega = c_\omega$.
+
+The characteristic polynomial alone is not quite enough to classify
+$C$: one must also exclude a non-trivial Jordan block at the
+eigenvalue~$1$, which would make $C$ parabolic rather than elliptic.
+The same exact computation gives
+\[
+  \mathrm{rank}(C - I) \;=\; 2, \qquad \dim\ker(C - I) \;=\; 2,
+\]
+and the restriction of the Lorentz form $\eta$ to the two-dimensional
+fixed space $\ker(C - I)$ has Gram matrix
+\[
+  G \;=\; \begin{pmatrix}
+    -1 & 0 \\ 0 & (13 + \sqrt{5})/2
+  \end{pmatrix},
+  \qquad
+  \det G \;=\; -\frac{13 + \sqrt{5}}{2} \;<\; 0,
+\]
+so $\eta$ has signature $(1, 1)$ on the fixed plane. Therefore $C$
+is conjugate in $\mathrm{SO}^+(3,1)^0$ to a spatial rotation by angle
+$\omega$ about the spacelike axis perpendicular to its fixed plane.
+The trace, characteristic polynomial, fixed-plane Gram matrix, rank
+of $C - I$, and minimal polynomial of $c_\omega$ are all reproduced
+from these definitions in symbolic and 200-digit precision arithmetic
+by claims [1], [2], [9] of the companion artifact \cite{ALPCode}.
+
+The cosine $c_\omega$ has minimal polynomial
+\[
+  2500 x^2 \;-\; 3100 x \;+\; 641 \;=\; 0
+\]
+over $\mathbb{Q}$, with discriminant
+$\Delta = 3100^2 - 4 \cdot 2500 \cdot 641 = 3\,200\,000 = 800^2 \cdot 5$,
+non-square in $\mathbb{Q}$. The polynomial is irreducible,
+$[\mathbb{Q}(c_\omega) : \mathbb{Q}] = 2$, and $c_\omega \in
+\mathbb{Q}(\sqrt{5})$.
+
+\begin{lemma}[Cyclotomic cosine exclusion]\label{lem:cce}
+Let $c \in \mathbb{R}$ have $[\mathbb{Q}(c) : \mathbb{Q}] = 2$.
+Suppose $c = \cos\omega$ with $\omega / \pi \in \mathbb{Q}$. Then
+$\zeta := e^{i\omega}$ is a root of unity of some order $m \geq 1$,
+and $2c = \zeta + \zeta^{-1}$ lies in the maximal real subfield of
+$\mathbb{Q}(\zeta_m)$, which has degree $\phi(m)/2$ over
+$\mathbb{Q}$. The constraint $\phi(m)/2 = 2$ forces
+\[
+  m \;\in\; \{5,\,8,\,10,\,12\}.
+\]
+The corresponding cosine values are
+\[
+  m = 5: \;\;\pm\tfrac{\sqrt{5}-1}{4},\; \mp\tfrac{1+\sqrt{5}}{4}; \qquad
+  m = 8: \;\;\pm\tfrac{\sqrt{2}}{2}; \\
+  m = 10: \;\;\pm\tfrac{1+\sqrt{5}}{4},\; \mp\tfrac{\sqrt{5}-1}{4}; \qquad
+  m = 12: \;\;\pm\tfrac{\sqrt{3}}{2},
+\]
+giving the eight distinct candidate values
+\[
+  c \in \Bigl\{\pm\tfrac{\sqrt{2}}{2},\; \pm\tfrac{\sqrt{3}}{2},\;
+    \pm\tfrac{1+\sqrt{5}}{4},\; \pm\tfrac{\sqrt{5}-1}{4}\Bigr\}.
+\]
+The lower cyclotomic orders $m \in \{1, 2, 3, 4, 6\}$ give cosine
+values $\{\pm 1, 0, \pm 1/2\}$ in $\mathbb{Q}$ and are excluded by
+$[\mathbb{Q}(c) : \mathbb{Q}] = 2$.
+\end{lemma}
+
+This is a standard consequence of cyclotomic theory; the rational
+multiples-of-$\pi$ case also follows from Niven's theorem
+\cite{Niven}.
+
+Applying Lemma~\ref{lem:cce} to $c_\omega = (31 + 8\sqrt{5})/50$,
+with degree two over $\mathbb{Q}$ established above: the values
+$\pm\sqrt{2}/2, \pm\sqrt{3}/2$ do not lie in $\mathbb{Q}(\sqrt{5})$
+(since $\sqrt{2}, \sqrt{3} \notin \mathbb{Q}(\sqrt{5})$). The four
+remaining values $\pm(1+\sqrt{5})/4 \approx \pm 0.8090$ and
+$\pm(\sqrt{5}-1)/4 \approx \pm 0.3090$ are numerically distinct from
+$c_\omega \approx 0.9778$. Hence $\omega/\pi \notin \mathbb{Q}$.
+
+The cyclic group $\langle C\rangle$ is therefore infinite, and its
+topological closure in $\mathrm{SO}^+(3,1)^0$ is the unique
+one-parameter elliptic subgroup $T_C \cong S^1$ of rotations sharing
+$C$'s fixed Lorentz frame. We have $T_C \subseteq H^0$, so
+$\dim H^0 \geq 1$, in particular $\mathfrak{h} = \mathrm{Lie}(H^0) \neq
+\{0\}$.
+
+\emph{Step 2: Lie algebra normality.}
+Since $H^0$ is normal in $H$ and $\Gamma \subseteq H$, the Lie
+algebra $\mathfrak{h}$ is invariant under $\mathrm{Ad}(\Gamma)$, in
+particular under $\mathrm{Ad}(A_5)$ and $\mathrm{Ad}(B_J)$. Decompose
+\[
+  \mathfrak{so}(3,1) \;=\; \mathfrak{k} \;\oplus\; \mathfrak{p},
+\]
+with $\mathfrak{k} \cong \mathfrak{so}(3)$ generated by rotation
+generators $J(v)$ and $\mathfrak{p}$ generated by boost generators
+$K(v)$, for $v \in \mathbb{R}^3$. Both $\mathfrak{k}$ and
+$\mathfrak{p}$ carry the standard three-dimensional irreducible
+$A_5$-representation $\rho_3$, so as $A_5$-modules
+\[
+  \mathfrak{so}(3,1) \;\cong\; \rho_3 \oplus \rho_3.
+\]
+The real centralizer of the $A_5$-action on $\mathbb{R}^3$ is
+$\mathbb{R} \cdot I$: a linear endomorphism commuting with all
+icosahedral rotations must preserve each fivefold rotation axis, the
+six fivefold axes span $\mathbb{R}^3$ in pairs, and matching scalars
+across axes is forced by the action of any threefold rotation
+permuting them. Hence $\rho_3$ is absolutely irreducible over
+$\mathbb{R}$, of real type rather than complex or quaternionic.
+
+By Schur's lemma applied over $\mathbb{R}$ to $\rho_3 \oplus \rho_3$,
+every nonzero $A_5$-invariant proper $\mathbb{R}$-subspace of
+$\mathfrak{so}(3,1)$ has dimension three and the form
+\[
+  L_\lambda \;=\; \bigl\{\, J(v) + \lambda\, K(v) : v \in
+  \mathbb{R}^3 \,\bigr\}, \qquad \lambda \in \mathbb{R} \cup
+  \{\infty\},
+\]
+where $L_\infty := \mathfrak{p}$. There are no $A_5$-invariant
+subspaces of dimension one, two, four, or five, since $\rho_3$ is
+absolutely irreducible and $\mathfrak{so}(3,1)$ contains it with
+multiplicity exactly two.
+
+The Lie brackets in $\mathfrak{so}(3,1)$ are
+\[
+  [J(u), J(v)] = J(u\times v), \quad
+  [J(u), K(v)] = K(u\times v), \quad
+  [K(u), K(v)] = -J(u\times v).
+\]
+For $X = J(u) + \lambda K(u)$ and $Y = J(v) + \lambda K(v)$,
+\[
+  [X, Y] \;=\; (1 - \lambda^2)\, J(u\times v) \;+\; 2\lambda\,
+  K(u\times v).
+\]
+Requiring $[X, Y] \in L_\lambda$ means there exists $w \in
+\mathbb{R}^3$ with $J(w) = (1-\lambda^2) J(u\times v)$ and $\lambda
+K(w) = 2\lambda K(u\times v)$. The first gives $w = (1-\lambda^2)
+(u \times v)$, and substituting into the second demands $\lambda(1 -
+\lambda^2)(u\times v) = 2\lambda (u\times v)$ for all $u, v$ with
+$u\times v \neq 0$. This yields $\lambda(1+\lambda^2) = 0$, whose
+only real solution is $\lambda = 0$. Hence $L_0 = \mathfrak{k}$ is
+the unique three-dimensional $A_5$-invariant Lie subalgebra. The
+remaining case $L_\infty = \mathfrak{p}$ is not closed under brackets
+either, since $[K(u), K(v)] = -J(u\times v) \in \mathfrak{k}$ lies
+outside $\mathfrak{p}$. Therefore the only $A_5$-invariant Lie
+subalgebras of $\mathfrak{so}(3,1)$ are $\{0\}$, $\mathfrak{k}$, and
+$\mathfrak{so}(3,1)$.
+
+By Step~1, $\mathfrak{h} \neq \{0\}$. Suppose for contradiction
+$\mathfrak{h} = \mathfrak{k}$. Then $\mathfrak{h}$ would be invariant
+under $\mathrm{Ad}(B_J)$. For any $v \in \mathbb{R}^3$ not parallel
+to $\hat{z}$, direct computation in the standard four-dimensional
+representation gives
+\[
+  \mathrm{Ad}(B_J)\, J(v) \;=\; \cosh\rho\, J(v) \;+\; \sinh\rho\,
+  K(\hat{z} \times v),
+\]
+which has a nonzero $\mathfrak{p}$-component since $\hat{z} \times v
+\neq 0$ and $\sinh\rho > 0$. Hence $\mathrm{Ad}(B_J)\, J(v) \notin
+\mathfrak{k}$, contradicting $\mathrm{Ad}(B_J)$-invariance. So
+$\mathfrak{h} = \mathfrak{so}(3,1)$, and $H^0 = \mathrm{SO}^+(3,1)^0$. Since $H \subseteq
+\mathrm{SO}^+(3,1)^0$ and $H \supseteq H^0 = \mathrm{SO}^+(3,1)^0$, we
+have $H = \mathrm{SO}^+(3,1)^0$.
+\end{proof}
+
+\begin{remark}
+The argument depends on $A_5$ being a specific finite subgroup of
+$\mathrm{SO}(3)$ acting irreducibly on $\mathbb{R}^3$, on the
+existence of an adjacent-vertex pair giving a calculable elliptic
+commutator, and on $B_J$ being a non-trivial boost. Replacing $A_5$
+with the cubic group $S_4$ (orientation-preserving subgroup of $O_h$)
+fails on the irreducibility step: $S_4$ acts on $\mathbb{R}^3$ as an
+irreducible three-dimensional representation, but the Niven exclusion
+of cubic angles gives candidate cosines that cannot be guaranteed
+distinct without case analysis. Replacing $\zeta_5$ with $\zeta_3$,
+$\zeta_4$, or $\zeta_8$ removes the natural pairing of an icosahedral
+spatial symmetry with a real-rapidity boost coming from a unit norm
+relation.
+\end{remark}
+
+
+\section{Lorentz protection}
+
+The density theorem has an immediate functional-analytic corollary.
+
+\begin{lemma}\label{lem:protection}
+Let $G$ be a topological group acting continuously on a topological
+space $F$. Let $H \leq G$ be a dense subgroup, and let
+$S: F \to \mathbb{R}$ be continuous and $H$-invariant. Then $S$ is
+$G$-invariant.
+\end{lemma}
+
+\begin{proof}
+Fix $g \in G$ and $\psi \in F$. Density of $H$ in $G$ gives a net
+$(h_i)_{i \in I}$ in $H$ with $h_i \to g$. Joint continuity of the
+action gives $h_i \cdot \psi \to g \cdot \psi$ in $F$, and continuity
+of $S$ gives
+\[
+  S(g \cdot \psi) \;=\; \lim_i S(h_i \cdot \psi) \;=\; S(\psi)
+\]
+by $H$-invariance of $S$ along the net. Limits in $\mathbb{R}$ are
+unique, so $S(g \cdot \psi) = S(\psi)$ as required. (For the
+application to $G = \mathrm{SO}^+(3,1)^0$, which is a Lie group and
+hence first-countable, the same argument with sequences in place of
+nets suffices.)
+\end{proof}
+
+\begin{corollary}[Lorentz protection]\label{cor:lp}
+Let $F$ be a topological space carrying a continuous action of
+$\mathrm{SO}^+(3,1)^0$, and let $S: F \to \mathbb{R}$ be a continuous
+functional invariant under $\Gamma = \langle A_5, B_J\rangle$. Then
+$S$ is $\mathrm{SO}^+(3,1)^0$-invariant.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:density}, $\Gamma$ is dense in
+$\mathrm{SO}^+(3,1)^0$. Apply Lemma~\ref{lem:protection} with
+$G = \mathrm{SO}^+(3,1)^0$ and $H = \Gamma$.
+\end{proof}
+
+The intended application is to a Wilson effective action
+$S_{\mathrm{eff}}$ obtained from a substrate field theory with $\Gamma$
+in its symmetry group. The corollary applies under the following
+explicit assumptions, which we collect for clarity:
+
+\begin{itemize}
+\item[(A1)] The microscopic dynamics, integration measure, regulator,
+  and coarse-graining map are all $\Gamma$-equivariant.
+\item[(A2)] The effective action $S_{\mathrm{eff}}$ is well-defined as
+  a functional on a field configuration space $F$ that carries a
+  continuous $\mathrm{SO}^+(3,1)^0$-action.
+\item[(A3)] $S_{\mathrm{eff}}$ is continuous on $F$ in some topology
+  with respect to which the $\mathrm{SO}^+(3,1)^0$-action is
+  continuous (e.g.\ Sobolev $H^k$ for $k$ sufficiently large, or
+  Schwartz, or any standard field-theory topology supporting the
+  intended observables).
+\end{itemize}
+
+These assumptions are satisfied by the standard cases of perturbative
+quantum field theory: polynomial Lagrangians of finite degree,
+renormalizable interactions, and Wilsonian effective actions with
+bounded ultraviolet cutoff. As a concrete sufficient choice, $F$ may
+be taken as $H^k_{\mathrm{loc}}(\mathbb{R}^{1,3})$ for some $k$ large
+enough to make the action functionals continuous in the field;
+$\mathrm{SO}^+(3,1)^0$ acts continuously on this space by pullback,
+and finite-degree polynomial actions are continuous on it. Under
+(A1)--(A3), Corollary~\ref{cor:lp} forces $S_{\mathrm{eff}}$ to be
+$\mathrm{SO}^+(3,1)^0$-invariant. No Lorentz-violating operator can
+appear in the effective Lagrangian, at any loop order, for any
+contribution continuous in (A3).
+
+The corollary fails when (A3) fails. Two ways this can happen are
+worth noting. If continuity fails on a measure-zero subset of $F$
+(e.g.\ light-cone singularities of correlation functions), the
+$\Gamma$-invariance still extends to $\mathrm{SO}^+(3,1)^0$-invariance
+on the dense open complement, and the corollary applies after
+restriction. If continuity fails generically, for instance because
+the effective action is defined only on a discrete subset of $F$ that
+is itself a $\Gamma$-orbit but not closed under the dense subgroup
+extension, then the dense-subgroup argument cannot upgrade the
+invariance, and the corollary does not apply.
+
+This blocks the Collins--Perez--Sudarsky obstruction at its premise:
+the mismatch between the substrate symmetry group and the Lorentz
+group, on which the obstruction depends, does not exist for $\Gamma$.
+The set of $\Gamma$-invariant continuous operators coincides with the
+set of $\mathrm{SO}^+(3,1)^0$-invariant continuous operators, so there
+is no Lorentz-violating operator to fine-tune away.
+
+\begin{remark}
+The corollary extends to the non-perturbative regime in the following
+sense. If the configuration space $F$ admits an integer-valued
+topological invariant $W : F \to \mathbb{Z}$ (instanton number,
+soliton charge, monopole class), then $W$ is locally constant since
+$\mathbb{Z}$ carries the discrete topology, and the level sets
+$W^{-1}(n)$ are open and pairwise disjoint. Each $\Lambda \in
+\mathrm{SO}^+(3,1)^0$ acts on $F$ as a homeomorphism and therefore
+preserves the level sets. Within each sector, $S_{\mathrm{eff}}$ is
+continuous in the sense of (A3), and Corollary~\ref{cor:lp} applies
+sector-wise. The partition function decomposes as $Z(g) = \sum_n
+Z_n(g)$ with each $Z_n$ independently $\mathrm{SO}^+(3,1)^0$-invariant.
+\end{remark}
+
+\begin{remark}
+Corollary~\ref{cor:lp} requires the field configuration space $F$ to
+support a continuous $\mathrm{SO}^+(3,1)^0$-action. This excludes
+substrates realized as locally finite point sets in Minkowski space,
+since no such set is invariant under a noncompact dense Lorentz
+subgroup without producing accumulating orbits. The intended
+application is to substrate models in which $F$ is a continuum field
+space, with the discrete substrate symmetry $\Gamma$ acting via its
+embedding in $\mathrm{SO}^+(3,1)^0$ on continuum fields, rather than
+on a literal lattice of spacetime points.
+\end{remark}
+
+
+\section{Numerical appendix: Molien series and spatial anisotropy}
+
+The density theorem of Section~3 is an algebraic statement about
+$\mathrm{SO}^+(3,1)^0$; it does not by itself constrain the spatial
+anisotropy structure of any specific lattice. However, a separate and
+classical Molien-series calculation gives a useful spatial-symmetry
+fact about the icosahedral rotation group, which we record here as a
+numerical check.
+
+For a finite subgroup $G \subset \mathrm{O}(3)$ acting on
+$\mathbb{R}^3$, the Molien series
+\[
+  M_G(t) \;=\; \frac{1}{|G|} \sum_{g \in G} \frac{1}{\det(1 - tg)}
+\]
+encodes the Hilbert series of the ring of $G$-invariant polynomials.
+For the rotational icosahedral group $G = A_5$, Klein \cite{Klein1884}
+gave the closed form
+\[
+  M_{A_5}(t) \;=\; \frac{1 + t^{15}}{(1 - t^2)(1 - t^6)(1 - t^{10})}.
+\]
+Reading off coefficients gives the dimension count
+\[
+  \dim\bigl((S^d \mathbb{R}^3)^{A_5}\bigr) \quad
+  \text{for } d = 0, 2, 4, 6, 8, 10, 12, 14, 15, 16
+  \quad = \quad 1, 1, 1, 2, 2, 3, 4, 4, 1, 5.
+\]
+Crucially, $\dim((S^2 \mathbb{R}^3)^{A_5}) = \dim((S^4
+\mathbb{R}^3)^{A_5}) = 1$, with unique invariants $|k|^2$ and
+$(|k|^2)^2$ respectively. The first non-isotropic $A_5$-invariant
+appears at degree six: $\dim((S^6 \mathbb{R}^3)^{A_5}) = 2$, with the
+two-dimensional space spanned by $(|k|^2)^3$ and the Klein form $K_6$.
+For comparison, the cubic point group $O_h$ has $\dim((S^4
+\mathbb{R}^3)^{O_h}) = 2$, so cubic-symmetric couplings have
+non-isotropic invariants already at degree four.
+
+This Molien-series fact has a direct numerical consequence on graph
+Laplacians. For couplings $e_1, \dots, e_m \in \mathbb{R}^3$ closed
+under a finite subgroup $G \subset \mathrm{SO}(3)$, the dispersion
+relation
+\[
+  E(k) \;=\; \sum_i \bigl(1 - \cos(k \cdot e_i)\bigr)
+\]
+expands as a sum of homogeneous polynomials in the components of $k$,
+each lying in the corresponding $G$-invariant subspace of $S^d
+\mathbb{R}^3$. The angular spread $\Delta(|k|) = \max_n E(|k| n) -
+\min_n E(|k| n)$ over the unit sphere is a power-law function of
+$|k|$ at small $|k|$, with exponent equal to the smallest degree at
+which a non-isotropic $G$-invariant appears.
+
+We test this numerically. Couplings are taken as the six unit vectors
+of the cubic axes (sum normalized to common total weight), and the
+twelve unit vectors along the icosahedron vertices, normalized
+similarly. The unit sphere is sampled by $5000$ directions on a
+Fibonacci spiral. Linear regression of $\log\Delta$ on $\log|k|$ in
+the regime $|k| \leq 0.3$ gives:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+coupling family & predicted exponent & fitted exponent \\
+\hline
+cubic ($O_h$)        & 4 & 3.998 \\
+icosahedral ($A_5$)  & 6 & 5.998 \\
+\hline
+\end{tabular}
+\caption{Power-law exponent of the angular spread $\Delta(|k|)$ for
+two families of unit-vector couplings in $\mathbb{R}^3$, fitted in
+the regime $|k| \leq 0.3$. The exponents agree with the predictions
+of the Molien series $M_G(t)$ for $G = O_h$ (degree-four anisotropy)
+and $G = A_5$ (degree-six anisotropy) to three significant figures.}
+\end{table}
+
+The exponents agree with the Molien-series prediction to three
+significant figures.
+
+The boundary between the two statements is sharp. The density theorem
+of Section~3 protects Lorentz symmetry in the continuum effective
+dynamics, given continuity and exact $\Gamma$-symmetry, via
+Corollary~\ref{cor:lp}. The numerical check above is a property of
+the finite spatial subgroup $A_5 \subset \mathrm{SO}(3)$ acting on
+$\mathbb{R}^3$: it shows that $A_5$-invariant lattice couplings
+postpone the first angular anisotropy to degree six in the spatial
+momentum, two orders later than cubic-symmetric couplings. This is
+not a numerical test of Lorentz density, and would not become one if
+the fits were extended to higher precision. The Molien-series
+prediction and Theorem~\ref{thm:density} are logically independent;
+they share only the algebraic origin of the icosahedral group.
+
+
+\section{Discussion}
+
+Finitely generated dense subgroups of $\mathrm{SO}^+(3,1)^0$ have a
+substantial mathematical literature, of which we make no exhaustive
+review. Margulis's arithmeticity and superrigidity theorems
+\cite{Margulis91} classify lattices in semisimple Lie groups of higher
+rank; Ratner's theorems \cite{Ratner91} describe orbit closures and
+invariant measures of unipotent flows on homogeneous spaces;
+Breuillard and Gelander \cite{BG03} prove in particular that every
+connected Lie group of positive dimension admits a finitely generated
+dense free subgroup. The construction of the present paper is
+specific rather than generic: it gives an explicit cyclotomic
+mechanism with computable elliptic commutator and closed-form
+rotation cosine in $\mathbb{Q}(\sqrt{5})$.
+
+The construction of Section~2 gives one finitely-generated
+algebraic subgroup of $\mathrm{SO}^+(3,1)^0$ that is dense in the
+identity component. The proof is
+constructive: an explicit elliptic commutator with closed-form
+rotation cosine in $\mathbb{Q}(\sqrt{5})$, plus an irreducibility
+argument for the rotational icosahedral representation. The structural
+features that the proof exploits are: a non-abelian finite rotation
+subgroup acting irreducibly on $\mathbb{R}^3$, a boost whose
+commutator with one of its conjugates produces an infinite-order
+elliptic Lorentz element, and the bracket structure of
+$\mathfrak{so}(3,1)$ which forbids three-dimensional Lie subalgebras
+mixing rotations and boosts beyond pure rotations.
+
+We do not claim that an irrational rapidity alone suffices. The
+powers of a single boost lie in a discrete one-parameter subgroup of
+$\mathrm{SO}^+(3,1)^0$ regardless of rationality. The hypothesis that
+makes the present proof work is the production of a specific
+infinite-order elliptic element via the conjugate-boost commutator,
+together with $A_5$-irreducibility ruling out proper
+$\mathrm{Ad}(\Gamma)$-invariant Lie subalgebras. Similar constructions
+may work for other finite rotation groups and other boosts whenever
+the same combination of conditions holds; we do not attempt a
+classification here.
+
+The cyclotomic origin of the rapidity is natural: the unit $J = 1 +
+\zeta_5^2$ in $\mathbb{Z}[\zeta_5]$ has Galois-conjugate moduli
+$(\varphi^{-1}, \varphi, \varphi, \varphi^{-1})$, providing a
+canonical real positive logarithm $\log\varphi$ for the boost rapidity.
+Cyclotomic fields of smaller conductor do not produce dense subgroups
+via the same construction. $\mathbb{Z}[\zeta_3]$ and $\mathbb{Z}[i] =
+\mathbb{Z}[\zeta_4]$ have no real-positive units other than units of
+finite order, so no irrational rapidity is available. $\mathbb{Z}[\zeta_8]$
+has units $1 + \sqrt{2}$ but the associated finite rotation groups
+($A_4$, $S_4$ and their double covers) do not place an icosahedral
+adjacency at the calculable angle $\arccos(1/\sqrt{5})$.
+
+The Lorentz protection corollary is independent of the specific
+example. Any finite-rank algebraic substrate whose symmetry group is
+dense in $\mathrm{SO}^+(3,1)^0$ is automatically immune to the
+Collins--Perez--Sudarsky obstruction, under the regularity assumptions
+(A1)--(A3). The substantive question for any candidate substrate is
+whether its symmetry group is dense in $\mathrm{SO}^+(3,1)^0$. This is
+a tractable algebraic question, decidable by methods of the type used
+here.
+
+The construction does not address the conformal factor of the
+emergent metric or the topological sector structure of the
+configuration space; these require separate inputs. Density alone
+provides Lorentz invariance, not geometry.
+
+A final caveat on the substrate interpretation. The result should not
+be read as asserting that an ordinary locally finite spacetime
+lattice can carry $\Gamma$ as a group of literal point automorphisms.
+A noncompact dense Lorentz subgroup acting on a discrete subset of
+Minkowski space necessarily produces accumulating orbits, which is
+incompatible with local finiteness. The construction identifies a
+dense algebraic symmetry mechanism that lives on a continuum
+configuration space; realizing it in a microscopic substrate requires
+an additional model-dependent implementation.
+
+We sketch one natural family of realizations to fix ideas. Take field
+configurations valued in finite-rank free $\mathcal{O}_K$-modules
+$\mathcal{O}_K^d$, with a Galois-equivariant update rule in the
+sense that the dynamics commutes with $\mathrm{Gal}(K / \mathbb{Q})$
+acting coordinatewise. Multiplication by a unit
+$u \in \mathcal{O}_K^\times$ preserves the lattice and embeds in
+$\mathrm{End}(\mathcal{O}_K^d)$ as an integer matrix; the unit
+$J = 1 + \zeta_5^2$ realizes the boost $B_J$ in the corresponding
+real embedding. The icosahedral $A_5$ acts by an integer
+representation on the relevant lattice, and $\Gamma$ generates the
+substrate symmetry. The continuum effective action obtained by
+coarse-graining such a substrate sits naturally in a Sobolev space of
+the type discussed for (A1)--(A3), and the Lorentz protection
+corollary applies. We do not develop a specific dynamics here; the
+point is only that the algebraic mechanism has plausible carriers and
+is not vacuously satisfied. The Lorentz protection corollary applies
+whenever any such implementation exists and satisfies (A1)--(A3); the
+present paper makes no commitment to a particular microscopic model.
+
+
+\section*{Acknowledgements}
+
+The Molien-series and Niven verifications, the elliptic-commutator
+trace calculation, and the numerical dispersion test were carried out
+using the \texttt{sympy}, \texttt{mpmath} and \texttt{numpy}
+libraries. Symbolic-algebra and proof-search tools were used in
+checking intermediate computations. The author thanks technical
+reviewers and proof-checking tools for several rounds of close
+reading that identified the invalidity of an earlier
+polar-decomposition density argument, proposed the present
+Lie-algebra normality route, suggested the explicit elliptic
+classification (rank and fixed-plane signature) and the explicit
+$A_5$ element on icosahedron vertices, and recommended the cyclotomic
+cosine exclusion lemma in place of an opaque appeal to Niven's
+theorem. Computations are reproducible from the companion artifact
+\cite{ALPCode}.
+
+
+\begin{thebibliography}{99}
+
+\bibitem{CPSUV04}
+J.~Collins, A.~Perez, D.~Sudarsky, L.~Urrutia, H.~Vucetich,
+\emph{Lorentz invariance and quantum gravity: an additional
+fine-tuning problem?},
+Phys.\ Rev.\ Lett.\ \textbf{93} (2004) 191301.
+DOI: \texttt{10.1103/PhysRevLett.93.191301}.
+arXiv:\texttt{gr-qc/0403053}.
+
+\bibitem{Mattingly05}
+D.~Mattingly,
+\emph{Modern tests of Lorentz invariance},
+Living Rev.\ Relativity \textbf{8} (2005) 5.
+DOI: \texttt{10.12942/lrr-2005-5}.
+
+\bibitem{LiberatiReview}
+S.~Liberati,
+\emph{Tests of Lorentz invariance: a 2013 update},
+Class.\ Quant.\ Grav.\ \textbf{30} (2013) 133001.
+DOI: \texttt{10.1088/0264-9381/30/13/133001}.
+
+\bibitem{BHS87}
+L.~Bombelli, J.~Lee, D.~Meyer, R.~D.~Sorkin,
+\emph{Space-time as a causal set},
+Phys.\ Rev.\ Lett.\ \textbf{59} (1987) 521.
+
+\bibitem{Klein1884}
+F.~Klein,
+\emph{Vorlesungen \"uber das Ikosaeder und die Aufl\"osung der
+Gleichungen vom f\"unften Grade},
+Teubner, Leipzig, 1884.
+
+\bibitem{Niven}
+I.~Niven,
+\emph{Irrational Numbers},
+Carus Math.\ Monograph No.\ 11, MAA, 1956.
+
+\bibitem{Margulis91}
+G.~A.~Margulis,
+\emph{Discrete Subgroups of Semisimple Lie Groups},
+Ergebnisse der Mathematik 17, Springer, 1991.
+
+\bibitem{Ratner91}
+M.~Ratner,
+\emph{On Raghunathan's measure conjecture},
+Ann.\ Math.\ \textbf{134} (1991) 545--607.
+DOI: \texttt{10.2307/2944357}.
+
+\bibitem{BG03}
+E.~Breuillard, T.~Gelander,
+\emph{On dense free subgroups of Lie groups},
+J.\ Algebra \textbf{261} (2003) 448--467.
+DOI: \texttt{10.1016/S0021-8693(02)00665-1}.
+
+\bibitem{ALPCode}
+A.~M.~Thorn,
+\emph{algebraic-lorentz-protection: verification scripts}, 2026.\\
+DOI: \url{https://doi.org/10.5281/zenodo.20029689}.\\
+Source: \url{https://github.com/mathorn1973/algebraic-lorentz-protection}.
+
+\end{thebibliography}
+
+\end{document}
